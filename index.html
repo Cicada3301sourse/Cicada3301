@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>3301</title>
+  <style>
+    body {
+      background: #000;
+      color: #fff;
+      font-family: "Courier New", monospace;
+      text-align: center;
+      padding-top: 100px;
+    }
+
+    img {
+      width: 250px;
+      opacity: .8;
+      animation: flicker 3s infinite;
+    }
+
+    @keyframes flicker {
+
+      0%,
+      19%,
+      21%,
+      23%,
+      25%,
+      54%,
+      56%,
+      100% {
+        opacity: .8;
+      }
+
+      20%,
+      24%,
+      55% {
+        opacity: .2;
+      }
+    }
+
+    h1 {
+      font-size: 18px;
+      margin-top: 50px;
+    }
+
+    input {
+      background: #000;
+      border: none;
+      border-bottom: 1px solid #fff;
+      color: #fff;
+      padding: 5px;
+      width: 200px;
+      text-align: center;
+    }
+
+    button {
+      background: none;
+      border: 1px solid #fff;
+      color: #fff;
+      padding: 5px 15px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    #message {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #f00;
+      opacity: 0;
+      transition: .5s;
+    }
+
+    .shake {
+      animation: shake .4s;
+    }
+
+    @keyframes shake {
+      0% {
+        transform: translate(2px, 0);
+      }
+
+      25% {
+        transform: translate(-2px, 0);
+      }
+
+      50% {
+        transform: translate(2px, 0);
+      }
+
+      75% {
+        transform: translate(-2px, 0);
+      }
+
+      100% {
+        transform: translate(0, 0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <img src="imj/cicada.png" alt="Cicada">
+
+  <h1>Цвет — это ложь.<br>Код — истина.<br><br>Введи правильный hex, чтобы открыть дверь.</h1>
+  <input type="text" id="codeInput" placeholder="Enter code">
+  <button onclick="checkCode()">ENTER</button>
+  <div id="message"></div>
+
+  <script>
+    function checkCode() {
+      const input = document.getElementById("codeInput").value.trim().toLowerCase();
+      const valid = ["#00ff00", "00ff00", "#008000", "0x00ff00"];
+      const msg = document.getElementById("message");
+      if (valid.includes(input)) {
+        document.body.innerHTML = "<p style='color:#0f0;'>ACCESS GRANTED<br>Redirecting...</p>";
+        setTimeout(() => { window.location.href = "access.html"; }, 2000);
+      } else {
+        document.body.classList.add("shake");
+        msg.innerHTML = "ACCESS DENIED<br>THE CODE IS NOT PURE";
+        msg.style.opacity = 1;
+        setTimeout(() => { document.body.classList.remove("shake"); msg.style.opacity = 0; }, 1500);
+      }
+    }
+  </script>
+</body>
+
+</html>
