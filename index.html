@@ -114,7 +114,7 @@
   <script>
     function checkCode() {
       const input = document.getElementById("codeInput").value.trim().toLowerCase();
-      const valid = ["#00ff00", "00ff00", "#008000", "#008000","0x00ff00"];
+      const valid = ["#00ff00", "#00FF00","00FF00","00ff00","0 128 0", "01280","#008000", "#008000","0x00ff00"];
       const msg = document.getElementById("message");
       if (valid.includes(input)) {
         document.body.innerHTML = "<p style='color:#0f0;'>ACCESS GRANTED<br>Redirecting...</p>";
